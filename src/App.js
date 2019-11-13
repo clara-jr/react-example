@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import logo from './rickandmorty-logo.png';
 import './App.css';
 import { Input } from 'reactstrap';
-import * as characters from './characters.json';
 import List from './List';
 
 class App extends Component {
@@ -10,14 +9,17 @@ class App extends Component {
     super(props);
     this.state = {
       name: "",
+      all_characters: [],
       characters: []
     }
   }
   componentDidMount() {
-    this.setState({characters: characters.results});
+    fetch("https://rickandmortyapi.com/api/character")
+      .then(result => result.json())
+      .then(characters => this.setState({characters: characters.results, all_characters: characters.results}));
   }
   find = (e) => {
-    this.setState({characters: characters.results.filter((v, i) => v.name.toLowerCase().includes(e.target.value.toLowerCase()))})
+    this.setState({characters: this.state.all_characters.filter((v, i) => v.name.toLowerCase().includes(e.target.value.toLowerCase()))})
   }
   render() {
     return (

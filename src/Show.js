@@ -4,7 +4,6 @@ import { faSkull, faHeart, faQuestion, faMale, faFemale } from '@fortawesome/fre
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Card, CardImg, CardText, CardBody, CardHeader } from 'reactstrap';
 import Error from './Error';
-import * as characters from './characters.json';
 library.add(faSkull, faHeart, faQuestion, faMale, faFemale)
 
 class MyCard extends Component {
@@ -12,8 +11,13 @@ class MyCard extends Component {
     super(props);
     console.log(this.props.match.params.id)
     this.state = {
-      result: characters.results.filter((v, i) => v.id == this.props.match.params.id)[0]
+      result: []
     }
+  }
+  componentDidMount() {
+    fetch("https://rickandmortyapi.com/api/character/"+this.props.match.params.id)
+      .then(result => result.json())
+      .then(character => this.setState({result: character}));
   }
   render() {
     if (!this.state.result) {
