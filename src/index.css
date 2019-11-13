@@ -5,9 +5,48 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  text-align: center;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+header {
+  max-height: 300px;
+  padding-bottom: 50px;
+}
+
+.card, .card-header {
+    border-color: #fff;
+}
+
+.card-header {
+    color: #fff;
+    background-color: #282c34;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.active {
+  border-bottom: 1px solid #000;
+}
+
+.menu {
+  text-align: right;
+  padding-top: 2%;
+  padding-right: 2%;
+}
+
+.footer {
+  vertical-align: middle;
+  margin-top: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #282c34;
+  color: #fff;
 }
