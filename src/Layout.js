@@ -13,7 +13,6 @@ export class Header extends Component {
 
 class MyFooter extends Component {
   render() {
-  	console.log(this.props.location.pathname !== '/index');
   	if (this.props.location.pathname !== '/' && this.props.location.pathname !== '/index' && !this.props.location.pathname.startsWith('/name')) {
   		return <div></div>
   	}

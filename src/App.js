@@ -28,6 +28,7 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Input style={{ margin: 'auto', width: '200px' }} type="text" onChange={this.find} placeholder="name" />
         </header>
+        { this.state.characters.length === 0 && <div>Cargando...</div> }
         <List valores={this.state.characters}/>
       </div>
     );
