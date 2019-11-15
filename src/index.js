@@ -9,19 +9,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'; // React
 import './index.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'; // Router
 import { Switch } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { store } from './store';
 
 ReactDOM.render(
-	<Router>
-		<div>
-			<Header/>
-			<Switch>
-				<Route path={["/", "/index"]} exact component={App} />
-				<Route path="/name/:id" component={Card} />
-				<Route component={Error} />
-			</Switch>
-			<Footer/>
-		</div>
-	</Router>,
+	<Provider store={store}>
+		<Router>
+			<div>
+				<Header/>
+				<Switch>
+					<Route path={["/", "/index"]} exact component={App} />
+					<Route path="/name/:id" component={Card} />
+					<Route component={Error} />
+				</Switch>
+				<Footer/>
+			</div>
+		</Router>
+	</Provider>,
 	document.getElementById('root')
 );
 
